@@ -43,7 +43,7 @@ export const siteConfig = {
   companyRegistrationNumber: "12345678",
   yearEstablished: 2000,
   founder: "[FOUNDER NAME]",
-  description: "Elite architectural glass installation and replacement solutions for commercial properties across London. We provide structural glazing and high-quality workmanship.",
+  description: "Elite architectural glass installation and replacement solutions for commercial properties across London. Structural glazing and high-quality workmanship.",
   emergencyService: true,
   certifications: ["[CERTIFICATION 1]", "[CERTIFICATION 2]"],
   brands: ["[BRAND 1]", "[BRAND 2]"],
