@@ -22,15 +22,19 @@ export default function Home() {
               dangerouslySetInnerHTML={{ __html: siteConfig.ghl.heroFormEmbedCode }}
             />
           ) : (
-            <div className="w-full h-full relative">
-              <img 
-                src={siteConfig.heroImage} 
-                alt={`${siteConfig.businessName} Architectural Glazing`}
-                className="w-full h-full object-cover object-center mix-blend-multiply opacity-50" 
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-black/50 backdrop-blur-sm">
-                <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4">Lead Capture</span>
-                <p className="text-white text-sm max-w-sm">Replace this image by dropping your GoHighLevel (GHL) Form Embed Code into siteConfig.ts under ghl.heroFormEmbedCode</p>
+            <div className="w-full h-full bg-white flex flex-col items-center justify-center p-8 lg:p-16">
+              <div className="w-full max-w-md space-y-6">
+                <div className="text-center space-y-2">
+                  <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs">GHL Lead Capture</span>
+                  <h3 className="text-2xl font-bold text-foreground">Request a Quote</h3>
+                  <p className="text-muted-foreground text-sm">Paste your GHL Form Embed Code into siteConfig.ts to replace this skeleton.</p>
+                </div>
+                <div className="space-y-4 pt-4 opacity-40">
+                  <div className="h-12 w-full bg-muted border border-border rounded-md" />
+                  <div className="h-12 w-full bg-muted border border-border rounded-md" />
+                  <div className="h-24 w-full bg-muted border border-border rounded-md" />
+                  <div className="h-12 w-full bg-foreground rounded-md" />
+                </div>
               </div>
             </div>
           )}

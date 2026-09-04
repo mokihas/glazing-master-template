@@ -4,7 +4,6 @@ import "./globals.css"
 import { siteConfig } from "@/config/siteConfig"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
-import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -72,7 +71,6 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <FloatingWhatsApp />
         
         {/* GoHighLevel Chat Widget Injection */}
         {siteConfig.ghl?.enableChatWidget && siteConfig.ghl.chatWidgetEmbedCode.includes('<') && !siteConfig.ghl.chatWidgetEmbedCode.includes('Paste your GHL') && (
