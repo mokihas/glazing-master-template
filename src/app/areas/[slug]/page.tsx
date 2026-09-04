@@ -4,6 +4,8 @@ import { siteConfig } from "@/config/siteConfig"
 import { Button } from "@/components/ui/Button"
 import { CheckCircle2, Phone } from "lucide-react"
 
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema"
+
 export async function generateStaticParams() {
   return siteConfig.serviceAreas.map((area) => ({
     slug: area.slug,
@@ -31,6 +33,12 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
   return (
     <>
+      <BreadcrumbSchema 
+        items={[
+          { name: "Areas We Serve", path: "/areas" },
+          { name: area.name, path: `/areas/${area.slug}` }
+        ]} 
+      />
       <section className="bg-background border-b border-border py-24 md:py-32">
         <div className="container">
           <div className="max-w-3xl space-y-6">

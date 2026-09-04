@@ -55,11 +55,17 @@ export const metadata: Metadata = {
   },
 }
 
+import { runBuildTimeSEOGuards } from "@/lib/seo-guards"
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  
+  // Run advanced strict SEO checks
+  runBuildTimeSEOGuards()
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} min-h-screen flex flex-col font-sans antialiased`}>

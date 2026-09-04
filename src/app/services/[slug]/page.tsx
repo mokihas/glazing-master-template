@@ -3,6 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/siteConfig"
 import { Button } from "@/components/ui/Button"
 import { ServiceSchema } from "@/components/seo/ServiceSchema"
+import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema"
 import { CheckCircle2 } from "lucide-react"
 
 export async function generateStaticParams() {
@@ -36,6 +37,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         name={service.name} 
         description={service.longDescription} 
         url={`${siteConfig.website}/services/${service.slug}`} 
+      />
+      <BreadcrumbSchema 
+        items={[
+          { name: "Services", path: "/services" },
+          { name: service.name, path: `/services/${service.slug}` }
+        ]} 
       />
       
       {/* Hero */}

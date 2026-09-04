@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "qa": "next build",
+    "sync": "git add . && git commit -m \"update master template\" && git push"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.3.3",
