@@ -44,6 +44,21 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                {siteConfig.whatsapp && siteConfig.whatsapp !== "WHATSAPP_PLACEHOLDER" && (
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#25D366]/10 p-3 rounded-full text-[#25D366]">
+                      <MessageCircle className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">WhatsApp</h3>
+                      <p className="text-muted-foreground mb-1">Send us photos of your project.</p>
+                      <a href={`https://wa.me/${siteConfig.whatsapp}`} className="text-lg font-bold hover:text-[#25D366] transition-colors" target="_blank" rel="noopener noreferrer">
+                        {siteConfig.whatsapp}
+                      </a>
+                    </div>
+                  </div>
+                )}
+
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-3 rounded-full text-primary">
                     <Mail className="h-6 w-6" />

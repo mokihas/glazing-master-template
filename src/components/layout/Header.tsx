@@ -83,11 +83,15 @@ export function Header() {
                 <Phone className="mr-2 h-4 w-4" /> Call Now
               </Link>
             </Button>
-            <Button asChild variant="outline" className="w-full justify-center text-[#25D366] border-[#25D366] hover:bg-[#25D366]/10">
-              <Link href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp Us
-              </Link>
-            </Button>
+            
+            {siteConfig.whatsapp && siteConfig.whatsapp !== "WHATSAPP_PLACEHOLDER" && (
+              <Button asChild variant="outline" className="w-full justify-center text-[#25D366] border-[#25D366] hover:bg-[#25D366]/10">
+                <Link href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp Us
+                </Link>
+              </Button>
+            )}
+
             <Button asChild className="w-full justify-center">
               <Link href="/request-a-quote">Request a Quote</Link>
             </Button>

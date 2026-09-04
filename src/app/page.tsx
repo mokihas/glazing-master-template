@@ -78,14 +78,14 @@ export default function Home() {
       {/* SECTION 2 - STATS / TRUST */}
       <section className="py-20 bg-background border-b border-border">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 divide-x divide-border">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 md:divide-x md:divide-border">
             {[
               { value: "20+", label: "Years Experience" },
               { value: "500+", label: "Projects Completed" },
               { value: "100%", label: "Safety Record" },
               { value: "24/7", label: "Emergency Response" }
             ].map((stat, i) => (
-              <div key={i} className={`flex flex-col ${i !== 0 ? 'pl-12' : ''}`}>
+              <div key={i} className={`flex flex-col ${i !== 0 ? 'md:pl-12' : ''}`}>
                 <span className="text-4xl md:text-5xl font-bold text-foreground mb-2">{stat.value}</span>
                 <span className="text-xs font-bold tracking-[0.1em] uppercase text-muted-foreground">{stat.label}</span>
               </div>
