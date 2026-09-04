@@ -107,6 +107,13 @@ export function Footer() {
                  <Mail className="w-4 h-4 text-gray-600" /> {siteConfig.email}
               </a>
             </li>
+            <li className="flex items-start gap-3 text-gray-400">
+               <MapPin className="w-4 h-4 text-gray-600 shrink-0 mt-0.5" />
+               <span>
+                 {siteConfig.streetAddress}<br />
+                 {siteConfig.city}, {siteConfig.state} {siteConfig.postalCode}
+               </span>
+            </li>
           </ul>
         </div>
 
