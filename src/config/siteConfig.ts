@@ -138,5 +138,11 @@ export const siteConfig = {
       question: "Do you service commercial properties?",
       answer: "Absolutely. We handle a wide range of commercial glazing projects, including office partitions, shopfronts, and commercial door repairs."
     }
-  ]
+  ],
+  ghl: {
+    enableChatWidget: true,
+    chatWidgetEmbedCode: `<!-- Paste your GHL Chat Widget Code Here -->`,
+    heroFormEmbedCode: `<!-- Paste your GHL Hero Form Embed Code Here -->`,
+    contactFormEmbedCode: `<!-- Paste your GHL Contact Page Form Embed Code Here -->`
+  }
 };

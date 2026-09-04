@@ -2,6 +2,8 @@ import Link from "next/link"
 import { siteConfig } from "@/config/siteConfig"
 
 export function FloatingWhatsApp() {
+  // Hide WhatsApp if GHL Chat Widget is prioritized, or if WhatsApp is missing/placeholder
+  if (siteConfig.ghl?.enableChatWidget) return null;
   if (!siteConfig.whatsapp || siteConfig.whatsapp === "WHATSAPP_PLACEHOLDER") return null;
 
   return (

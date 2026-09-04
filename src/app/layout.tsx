@@ -73,6 +73,11 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <FloatingWhatsApp />
+        
+        {/* GoHighLevel Chat Widget Injection */}
+        {siteConfig.ghl?.enableChatWidget && siteConfig.ghl.chatWidgetEmbedCode.includes('<') && !siteConfig.ghl.chatWidgetEmbedCode.includes('Paste your GHL') && (
+          <div dangerouslySetInnerHTML={{ __html: siteConfig.ghl.chatWidgetEmbedCode }} />
+        )}
       </body>
     </html>
   )

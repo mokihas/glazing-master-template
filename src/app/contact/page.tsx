@@ -105,38 +105,46 @@ export default function ContactPage() {
           <div className="bg-muted p-8 rounded-xl border border-border">
             <h2 className="text-2xl font-bold mb-2">Send us a Message</h2>
             <p className="text-muted-foreground mb-6">Fill out the form below and we'll get back to you shortly.</p>
-            <form className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">Name</label>
-                  <input id="name" type="text" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="Your Name" />
+            
+            {siteConfig.ghl?.contactFormEmbedCode && siteConfig.ghl.contactFormEmbedCode.includes('<') && !siteConfig.ghl.contactFormEmbedCode.includes('Paste your GHL') ? (
+              <div 
+                className="w-full bg-white rounded-lg p-4"
+                dangerouslySetInnerHTML={{ __html: siteConfig.ghl.contactFormEmbedCode }}
+              />
+            ) : (
+              <form className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium">Name</label>
+                    <input id="name" type="text" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="Your Name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-sm font-medium">Phone</label>
+                    <input id="phone" type="tel" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="Phone Number" />
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium">Phone</label>
-                  <input id="phone" type="tel" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="Phone Number" />
+                  <label htmlFor="email" className="text-sm font-medium">Email</label>
+                  <input id="email" type="email" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="Email Address" />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">Email</label>
-                <input id="email" type="email" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="Email Address" />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="service" className="text-sm font-medium">Service Required</label>
-                <select id="service" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm">
-                  <option>Select a service...</option>
-                  {siteConfig.services.map(s => <option key={s.id}>{s.name}</option>)}
-                  <option>Other</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">Message</label>
-                <textarea id="message" rows={4} className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="How can we help?"></textarea>
-              </div>
-              <Button type="button" size="lg" className="w-full">Send Message</Button>
-              <p className="text-xs text-muted-foreground text-center mt-4">
-                We'll use your information only to respond to your enquiry.
-              </p>
-            </form>
+                <div className="space-y-2">
+                  <label htmlFor="service" className="text-sm font-medium">Service Required</label>
+                  <select id="service" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm">
+                    <option>Select a service...</option>
+                    {siteConfig.services.map(s => <option key={s.id}>{s.name}</option>)}
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium">Message</label>
+                  <textarea id="message" rows={4} className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm" placeholder="How can we help?"></textarea>
+                </div>
+                <Button type="button" size="lg" className="w-full">Send Message</Button>
+                <div className="p-3 bg-secondary/10 border border-secondary text-secondary rounded text-xs text-center mt-4 font-semibold">
+                  You can replace this demo form with your GHL Form Embed by adding it to siteConfig.ghl.contactFormEmbedCode
+                </div>
+              </form>
+            )}
           </div>
           
         </div>

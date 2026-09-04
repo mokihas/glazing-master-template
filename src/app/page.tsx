@@ -12,16 +12,30 @@ export default function Home() {
       <LocalBusinessSchema />
       
       {/* SECTION 1 - HERO (Architectural Elegance) */}
-      <section className="relative min-h-[90vh] flex items-center bg-background overflow-hidden">
-        <div className="absolute inset-0 w-full h-full lg:w-[60%] lg:left-auto lg:right-0 bg-muted z-0">
-           <img 
-             src={siteConfig.heroImage} 
-             alt={`${siteConfig.businessName} Architectural Glazing`}
-             className="w-full h-full object-cover object-center mix-blend-multiply" 
-           />
-           {/* Sophisticated Overlay */}
-           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent lg:block hidden" />
-           <div className="absolute inset-0 bg-background/80 lg:hidden block" />
+      <section className="relative min-h-[90vh] flex items-center bg-background overflow-hidden border-b border-border">
+        
+        {/* Right Side GHL Embed or Fallback */}
+        <div className="absolute inset-0 w-full h-full lg:w-[45%] lg:left-auto lg:right-0 bg-muted z-0 flex items-center justify-center border-l border-border">
+          {siteConfig.ghl?.heroFormEmbedCode && siteConfig.ghl.heroFormEmbedCode.includes('<') && !siteConfig.ghl.heroFormEmbedCode.includes('Paste your GHL') ? (
+            <div 
+              className="w-full h-full bg-white flex items-center justify-center p-8 lg:p-12 overflow-y-auto"
+              dangerouslySetInnerHTML={{ __html: siteConfig.ghl.heroFormEmbedCode }}
+            />
+          ) : (
+            <div className="w-full h-full relative">
+              <img 
+                src={siteConfig.heroImage} 
+                alt={`${siteConfig.businessName} Architectural Glazing`}
+                className="w-full h-full object-cover object-center mix-blend-multiply opacity-50" 
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-black/50 backdrop-blur-sm">
+                <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-4">Lead Capture</span>
+                <p className="text-white text-sm max-w-sm">Replace this image by dropping your GoHighLevel (GHL) Form Embed Code into siteConfig.ts under ghl.heroFormEmbedCode</p>
+              </div>
+            </div>
+          )}
+           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent lg:block hidden pointer-events-none" />
+           <div className="absolute inset-0 bg-background/90 lg:hidden block pointer-events-none" />
         </div>
         
         <div className="container relative z-10 animate-fade-up">
