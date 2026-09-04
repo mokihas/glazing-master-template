@@ -39,7 +39,19 @@ export const siteConfig = {
     { platform: "linkedin", url: "https://linkedin.com/company/PROFILE" },
     // To add more, simply add new objects here: { platform: "youtube", url: "..." }, { platform: "twitter", url: "..." }
   ],
-  googleBusinessProfileUrl: "https://g.page/GBP_LINK",
+  reviews: {
+    // If you leave this empty (""), the entire Testimonial section and Google Badges will be hidden.
+    googleBusinessProfileUrl: "https://g.page/GBP_LINK",
+    aggregateRating: "4.9",
+    totalReviews: "124",
+    // Paste your Elfsight, Trustindex, or GHL Review Widget code here.
+    reviewWidgetEmbedCode: `<!-- Paste your Google Reviews Widget Embed Code Here -->`
+  },
+  trustBadges: [
+    // Add paths to any trust badges here. They will appear in the footer/homepage.
+    // { name: "GGF Member", image: "/images/badges/ggf.png" },
+    // { name: "FENSA Registered", image: "/images/badges/fensa.png" }
+  ] as Array<{name: string, image: string}>,
   companyRegistrationNumber: "12345678",
   yearEstablished: 2000,
   founder: "[FOUNDER NAME]",

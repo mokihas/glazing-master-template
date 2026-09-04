@@ -54,6 +54,17 @@ export function Footer() {
                </a>
             ))}
           </div>
+
+          {/* Trust Badges */}
+          {siteConfig.trustBadges && siteConfig.trustBadges.length > 0 && (
+            <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-gray-800/50">
+              {siteConfig.trustBadges.map((badge, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <img src={badge.image} alt={badge.name} className="h-10 object-contain grayscale hover:grayscale-0 transition-all" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Column 2: Navigation */}

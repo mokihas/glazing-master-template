@@ -71,6 +71,26 @@ export default function Home() {
                 View Showreel
               </Link>
             </div>
+            
+            {/* Hero Google Rating Badge */}
+            {siteConfig.reviews?.googleBusinessProfileUrl && siteConfig.reviews.googleBusinessProfileUrl !== "" && (
+              <div className="mt-12 flex items-center gap-3 bg-white/50 dark:bg-black/50 backdrop-blur-md py-2 px-4 rounded-full border border-border w-fit">
+                <svg className="w-5 h-5" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                <div className="flex text-[#FBBC04]">
+                  {[1,2,3,4,5].map(star => (
+                    <svg key={star} className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  ))}
+                </div>
+                <span className="text-xs font-bold text-foreground tracking-wide">
+                  {siteConfig.reviews.aggregateRating}/5 <span className="font-medium text-muted-foreground">({siteConfig.reviews.totalReviews} Reviews)</span>
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -166,7 +186,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 6 - FINAL CTA */}
+      {/* SECTION 6 - GBP TESTIMONIALS (Conditional) */}
+      {siteConfig.reviews?.googleBusinessProfileUrl && siteConfig.reviews.googleBusinessProfileUrl !== "" && (
+        <section className="py-32 bg-background border-t border-border overflow-hidden">
+          <div className="container">
+            <div className="flex flex-col items-center text-center mb-16">
+              <div className="mb-6 inline-flex items-center gap-3">
+                 <span className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">Client Endorsements</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+                Trusted by the Community.
+              </h2>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-xl font-bold">{siteConfig.reviews.aggregateRating}</span>
+                <div className="flex text-[#FBBC04]">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-sm font-medium text-muted-foreground">
+                Based on {siteConfig.reviews.totalReviews} Google Reviews
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto">
+              {siteConfig.reviews.reviewWidgetEmbedCode && siteConfig.reviews.reviewWidgetEmbedCode.includes('<') && !siteConfig.reviews.reviewWidgetEmbedCode.includes('Paste your Google') ? (
+                <div dangerouslySetInnerHTML={{ __html: siteConfig.reviews.reviewWidgetEmbedCode }} />
+              ) : (
+                <div className="grid md:grid-cols-2 gap-8">
+                  {siteConfig.testimonials.map((testimonial) => (
+                    <div key={testimonial.id} className="p-8 bg-muted rounded-xl border border-border flex flex-col justify-between">
+                      <div>
+                        <div className="flex text-[#FBBC04] mb-4">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <svg key={star} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                          ))}
+                        </div>
+                        <p className="text-lg text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
+                      </div>
+                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
+                        <div>
+                          <p className="font-bold text-sm text-foreground">{testimonial.name}</p>
+                          <p className="text-xs text-muted-foreground">{testimonial.service}</p>
+                        </div>
+                        <svg className="w-6 h-6" viewBox="0 0 24 24">
+                          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              <div className="mt-12 text-center">
+                <Button variant="outline" asChild>
+                  <a href={siteConfig.reviews.googleBusinessProfileUrl} target="_blank" rel="noopener noreferrer">
+                    Read all reviews on Google
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 7 - FINAL CTA */}
       <section className="py-32 bg-background border-t border-border">
         <div className="container flex flex-col items-center text-center">
           <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-10">
