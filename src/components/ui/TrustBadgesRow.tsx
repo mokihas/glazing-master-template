@@ -2,32 +2,58 @@ import { siteConfig } from "@/config/siteConfig";
 import Image from "next/image";
 
 export default function TrustBadgesRow() {
-  const { trustBadges } = siteConfig;
+  const { trustBadges, reviews } = siteConfig;
 
-  if (!trustBadges || trustBadges.length === 0) {
+  // Render if we have either badges OR a google rating
+  if ((!trustBadges || trustBadges.length === 0) && !reviews?.aggregateRating) {
     return null;
   }
 
   return (
-    <div className="w-full bg-slate-50 border-b border-slate-200 py-6">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
-          <span className="text-sm font-bold text-slate-500 uppercase tracking-widest text-center">
-            Accredited & Trusted By
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-300">
-            {trustBadges.map((badge, index) => (
-              <div key={index} className="flex items-center justify-center relative h-12 w-32">
-                <Image
-                  src={badge.image}
-                  alt={badge.name}
-                  fill
-                  className="object-contain"
-                  sizes="128px"
-                />
+    <div className="w-full relative z-20 -mt-16 mb-16 px-4">
+      <div className="container mx-auto max-w-5xl">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl shadow-black/10 border border-slate-200 dark:border-slate-800 p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-8">
+          
+          {/* Left Side - Rating */}
+          {reviews?.aggregateRating && (
+            <div className="flex flex-col items-center lg:items-start space-y-2 lg:pr-8 lg:border-r border-slate-200 dark:border-slate-800">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-500">Rated Excellent On Google</span>
+              <div className="flex items-center gap-3">
+                <span className="text-3xl font-black text-slate-900 dark:text-white">{reviews.aggregateRating}</span>
+                <div className="flex text-[#FBBC04]">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+              <span className="text-xs font-bold text-slate-400">Based on {reviews.totalReviews}+ reviews</span>
+            </div>
+          )}
+
+          {/* Right Side - Trust Badges */}
+          {trustBadges && trustBadges.length > 0 && (
+            <div className="flex flex-col items-center lg:items-end space-y-4 flex-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                Accredited & Trusted By
+              </span>
+              <div className="flex flex-wrap items-center justify-center lg:justify-end gap-6 md:gap-10 opacity-80 grayscale hover:grayscale-0 transition-all duration-300">
+                {trustBadges.map((badge, index) => (
+                  <div key={index} className="flex items-center justify-center relative h-10 w-28">
+                    <Image
+                      src={badge.image}
+                      alt={badge.name}
+                      fill
+                      className="object-contain"
+                      sizes="112px"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
