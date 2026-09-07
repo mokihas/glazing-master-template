@@ -48,9 +48,9 @@ export const siteConfig = {
     reviewWidgetEmbedCode: `<!-- Paste your Google Reviews Widget Embed Code Here -->`
   },
   trustBadges: [
-    // Add paths to any trust badges here. They will appear in the footer/homepage.
-    // { name: "GGF Member", image: "/images/badges/ggf.png" },
-    // { name: "FENSA Registered", image: "/images/badges/fensa.png" }
+    { name: "GGF Member", image: "/images/badges/ggf.png" },
+    { name: "FENSA Registered", image: "/images/badges/fensa.png" },
+    { name: "Checkatrade", image: "/images/badges/checkatrade.png" }
   ] as Array<{name: string, image: string}>,
   companyRegistrationNumber: "12345678",
   yearEstablished: 2000,
