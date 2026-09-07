@@ -3,6 +3,7 @@ import { siteConfig } from "@/config/siteConfig"
 import { Button } from "@/components/ui/Button"
 import { ServiceCard } from "@/components/ui/ServiceCard"
 import { ProjectCard } from "@/components/ui/ProjectCard"
+import TrustBadgesRow from "@/components/ui/TrustBadgesRow"
 import { ArrowRight, Phone, Play } from "lucide-react"
 import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema"
 
@@ -91,9 +92,11 @@ export default function Home() {
                 </span>
               </div>
             )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+      <TrustBadgesRow />
 
       {/* SECTION 2 - STATS / TRUST */}
       <section className="py-20 bg-background border-b border-border">
