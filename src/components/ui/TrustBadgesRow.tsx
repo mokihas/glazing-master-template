@@ -12,7 +12,7 @@ export default function TrustBadgesRow() {
   return (
     <div className="w-full relative z-20 -mt-12 mb-12 px-4">
       <div className="container mx-auto max-w-5xl">
-        <div className="bg-background rounded-2xl shadow-2xl border border-border p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="bg-card text-card-foreground rounded-2xl shadow-2xl shadow-black/5 border border-border p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-8">
           
           {/* Left Side - Rating */}
           {reviews?.aggregateRating && (
