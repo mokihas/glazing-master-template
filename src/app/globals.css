@@ -58,3 +58,13 @@ h1, h2, h3, h4, h5, h6 {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 1rem)); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
