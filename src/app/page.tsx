@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button"
 import { ServiceCard } from "@/components/ui/ServiceCard"
 import { ProjectCard } from "@/components/ui/ProjectCard"
 import TrustBadgesRow from "@/components/ui/TrustBadgesRow"
+import FaqSection from "@/components/ui/FaqSection"
 import { ArrowRight, Phone, Play } from "lucide-react"
 import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema"
 
@@ -241,7 +242,10 @@ export default function Home() {
         </section>
       )}
 
-      {/* SECTION 7 - FINAL CTA */}
+      {/* SECTION 7 - FAQS */}
+      <FaqSection />
+
+      {/* SECTION 8 - FINAL CTA */}
       <section className="py-32 bg-background border-t border-border">
         <div className="container flex flex-col items-center text-center">
           <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-10">
@@ -264,3 +268,5 @@ export default function Home() {
     </>
   )
 }
+
+
