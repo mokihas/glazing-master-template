@@ -1,10 +1,9 @@
-﻿import { siteConfig } from "@/config/siteConfig";
+import { siteConfig } from "@/config/siteConfig";
 import Link from "next/link";
-import Image from "next/image";
 
 export const metadata = {
-  title: \ | Prices,
-  description: Learn more about Prices at \ in \.,
+  title: `${siteConfig.businessName} | Prices`,
+  description: `Learn more about Prices at ${siteConfig.businessName} in ${siteConfig.city}.`,
 };
 
 export default function Page() {
