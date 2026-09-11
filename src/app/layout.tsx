@@ -49,6 +49,8 @@ export const metadata: Metadata = {
   },
 }
 
+import Header from "@/components/layout/Header"
+import Footer from "@/components/layout/Footer"
 import { runBuildTimeSEOGuards } from "@/lib/seo-guards"
 
 export default function RootLayout({
@@ -68,7 +70,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body>
+        <Header />
         <main>{children}</main>
+        <Footer />
         
         {/* GoHighLevel Chat Widget Injection */}
         {siteConfig.ghl?.enableChatWidget && siteConfig.ghl.chatWidgetEmbedCode.includes('<') && !siteConfig.ghl.chatWidgetEmbedCode.includes('Paste your GHL') && (

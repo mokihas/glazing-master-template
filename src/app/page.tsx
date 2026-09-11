@@ -427,54 +427,6 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
-        <div className="wrap">
-          <div>
-            <a className="logo" href="/">{siteConfig.businessName}<span>WINDOWS &amp; DOORS &middot; {siteConfig.city.toUpperCase()}</span></a>
-            <p style={{ marginTop: '18px', maxWidth: '38ch' }}>
-              {siteConfig.streetAddress}<br />
-              <a className="foot-phone" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>{siteConfig.phone}</a><br />
-              {siteConfig.email}
-            </p>
-            <p style={{ fontSize: '14px' }}>Mon&ndash;Fri 8am&ndash;6pm &middot; Sat 9am&ndash;1pm</p>
-          </div>
-          <div>
-            <h4>What we fit</h4>
-            <ul>
-              <li><a href="/services/windows">Replacement windows</a></li>
-              <li><a href="/services/doors">Front and back doors</a></li>
-              <li><a href="/services/bifold">Bi-folds and sliders</a></li>
-              <li><a href="/services/sash">Sliding sash</a></li>
-              <li><a href="/services/conservatories">Conservatories</a></li>
-              <li><a href="/services/repairs">Repairs and misted units</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4>Useful</h4>
-            <ul>
-              <li><a href="/prices">Price guide</a></li>
-              <li><a href="/finance">Finance</a></li>
-              <li><a href="/guarantee">Our guarantee</a></li>
-              <li><a href="/reviews">Reviews</a></li>
-              <li><a href="/areas">Areas we cover</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-          <div className="wrap legal">
-            <p style={{ margin: 0 }}>
-              &copy; {new Date().getFullYear()} {siteConfig.legalBusinessName} &middot; Company {siteConfig.companyRegistrationNumber} &middot; 
-              FENSA {siteConfig.fensaNumber} &middot; VAT {siteConfig.vatNumber} &middot; 
-              <a href="/privacy-policy">Privacy</a> &middot; <a href="/terms-and-conditions">Terms</a>
-            </p>
-          </div>
-      </footer>
-
-      <div className="sticky">
-        <a className="call" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>Call {siteConfig.phone}</a>
-        <a className="quote" href="/request-a-quote">Get a fixed price</a>
-      </div>
-
       <Script id="motion-script" strategy="afterInteractive">
         {`
         (function () {
@@ -590,4 +542,5 @@ export default function Home() {
     </>
   );
 }
+
 

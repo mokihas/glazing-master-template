@@ -1,103 +1,43 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { Phone, Menu, X, MessageCircle } from "lucide-react"
-import { siteConfig } from "@/config/siteConfig"
-import { Button } from "@/components/ui/Button"
-import { cn } from "@/lib/utils"
+import { siteConfig } from "@/config/siteConfig";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
-
-  const navLinks = [
-    { name: "Services", href: "/services" },
-    { name: "Projects", href: "/projects" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ]
+export default function Header() {
+  const pathname = usePathname();
+  
+  // The homepage has a transparent header integrated into the hero section
+  if (pathname === "/") return null;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          {/* Placeholder for Logo, fallback to text */}
-          <span className="text-2xl font-bold tracking-tight text-primary">
-            {siteConfig.businessName !== "[BUSINESS NAME]" ? siteConfig.businessName : "GlazeCorp"}
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em] text-foreground">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="transition-colors hover:text-secondary relative group"
-            >
-              {link.name}
-              <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center space-x-8">
-          <Link href={`tel:${siteConfig.phone}`} className="flex items-center text-[11px] font-bold uppercase tracking-[0.1em] hover:text-secondary transition-colors text-foreground">
-            <Phone className="mr-2 h-4 w-4 text-muted-foreground" />
-            {siteConfig.phone}
+    <header style={{ background: "var(--ink)", color: "white" }}>
+      <div className="ec-announce">The only {siteConfig.city} installer offering a 10-year guarantee</div>
+      <div className="ec-navrow" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+        <div className="wrap">
+          <Link className="ec-brand" href="/">
+            <span className="ec-brand-mark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" aria-hidden="true">
+                <rect x="4" y="3" width="16" height="18" rx="2" />
+                <path d="M12 3v18M4 12h16" />
+              </svg>
+            </span>
+            {siteConfig.businessName}
           </Link>
-          <Button asChild size="sm" className="h-10 px-6 text-[10px]">
-            <Link href="/request-a-quote">GET A QUOTE</Link>
-          </Button>
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle mobile menu"
-        >
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Nav */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background px-4 py-4 space-y-4">
-          <nav className="flex flex-col space-y-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-base font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-          <div className="flex flex-col space-y-3 pt-4 border-t border-border">
-            <Button asChild className="w-full justify-center">
-              <Link href={`tel:${siteConfig.phone}`}>
-                <Phone className="mr-2 h-4 w-4" /> Call Now
-              </Link>
-            </Button>
-            
-            {siteConfig.whatsapp && siteConfig.whatsapp !== "WHATSAPP_PLACEHOLDER" && (
-              <Button asChild variant="outline" className="w-full justify-center text-[#25D366] border-[#25D366] hover:bg-[#25D366]/10">
-                <Link href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp Us
-                </Link>
-              </Button>
-            )}
-
-            <Button asChild className="w-full justify-center">
-              <Link href="/request-a-quote">Request a Quote</Link>
-            </Button>
+          <ul className="ec-nav-links">
+            <li><Link href="/services/windows">Windows</Link></li>
+            <li><Link href="/services/doors">Doors</Link></li>
+            <li><Link href="/areas">Areas</Link></li>
+            <li><Link href="/prices">Prices</Link></li>
+            <li><Link href="/reviews">Reviews</Link></li>
+            <li><Link href="/about">About</Link></li>
+          </ul>
+          <div className="ec-navright">
+            <a className="ec-navphone" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>{siteConfig.phone}</a>
+            <Link className="ec-btn-solid-ec" href="/request-a-quote">Book a survey</Link>
           </div>
         </div>
-      )}
+      </div>
     </header>
-  )
+  );
 }
