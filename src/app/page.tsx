@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/siteConfig"
+﻿import { siteConfig } from "@/config/siteConfig"
 import Script from "next/script"
 
 export default function Home() {
@@ -27,8 +27,8 @@ export default function Home() {
               {siteConfig.businessName}
             </a>
             <ul className="ec-nav-links">
-              <li><a href="/windows">Windows</a></li>
-              <li><a href="/doors">Doors</a></li>
+              <li><a href="/services/windows">Windows</a></li>
+              <li><a href="/services/doors">Doors</a></li>
               <li><a href="/areas">Areas</a></li>
               <li><a href="/prices">Prices</a></li>
               <li><a href="/reviews">Reviews</a></li>
@@ -36,7 +36,7 @@ export default function Home() {
             </ul>
             <div className="ec-navright">
               <a className="ec-navphone" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>{siteConfig.phone}</a>
-              <a className="ec-btn-solid-ec" href="#quote">Book a survey</a>
+              <a className="ec-btn-solid-ec" href="/request-a-quote">Book a survey</a>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="ec-h2">for {siteConfig.city} homeowners who want a warmer, quieter house without the hard sell</p>
-          <a className="btn ec-cta" href="#quote">Book a free survey</a>
+          <a className="btn ec-cta" href="/request-a-quote">Book a free survey</a>
           <p className="ec-cta-note">
             Fixed price, valid 90 days. No salesman, no pressure, gone in 20 minutes.<br />
             or call <a href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>{siteConfig.phone}</a> &mdash; we answer 8am&ndash;6pm
@@ -121,25 +121,25 @@ export default function Home() {
             <p className="lede">Four routes, four different quotes. Pick the one that matches what you&apos;re actually replacing.</p>
           </div>
           <div className="panes">
-            <a className="pane" href="/windows">
+            <a className="pane" href="/services/windows">
               <div className="pane-kicker">Warmer rooms, quieter street</div>
               <h3>Replacing windows</h3>
               <p>Two windows or the whole front elevation. Priced per opening, scaffold included where it&apos;s needed.</p>
               <span className="pane-go">Price my windows</span>
             </a>
-            <a className="pane" href="/doors">
+            <a className="pane" href="/services/doors">
               <div className="pane-kicker">In and out in one day</div>
               <h3>One front or back door</h3>
               <p>Composite, uPVC or aluminium. Old door out, new one in and locking properly before we leave.</p>
               <span className="pane-go">Price a door</span>
             </a>
-            <a className="pane" href="/whole-house">
+            <a className="pane" href="/services/whole-house">
               <div className="pane-kicker">Staged over two or three days</div>
               <h3>Whole house</h3>
               <p>Every window and both doors. One survey, one price, one team, and you keep the house watertight throughout.</p>
               <span className="pane-go">Book a whole-house survey</span>
             </a>
-            <a className="pane" href="/conservatories">
+            <a className="pane" href="/services/conservatories">
               <div className="pane-kicker">Drawing before you commit a penny</div>
               <h3>Conservatory or extension</h3>
               <p>Glazed roofs, bi-folds and sliders. Building control and structural sign-off handled by us.</p>
@@ -381,19 +381,19 @@ export default function Home() {
             <h2 className="dsp">Start with the job you&apos;ve got.</h2>
             <p className="lede" style={{ marginTop: '12px' }}>Same four routes. Or fill the form and we&apos;ll ring you back within one working hour.</p>
             <div className="panes" style={{ marginTop: '24px' }}>
-              <a className="pane" href="/windows">
+              <a className="pane" href="/services/windows">
                 <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>Replacing windows</h3>
                 <span className="pane-go">Price my windows</span>
               </a>
-              <a className="pane" href="/doors">
+              <a className="pane" href="/services/doors">
                 <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>One front or back door</h3>
                 <span className="pane-go">Price a door</span>
               </a>
-              <a className="pane" href="/whole-house">
+              <a className="pane" href="/services/whole-house">
                 <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>Whole house</h3>
                 <span className="pane-go">Book a survey</span>
               </a>
-              <a className="pane" href="/conservatories">
+              <a className="pane" href="/services/conservatories">
                 <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>Conservatory or extension</h3>
                 <span className="pane-go">Talk it through</span>
               </a>
@@ -441,12 +441,12 @@ export default function Home() {
           <div>
             <h4>What we fit</h4>
             <ul>
-              <li><a href="/windows">Replacement windows</a></li>
-              <li><a href="/doors">Front and back doors</a></li>
-              <li><a href="/doors/bifold">Bi-folds and sliders</a></li>
-              <li><a href="/windows/sash">Sliding sash</a></li>
-              <li><a href="/conservatories">Conservatories</a></li>
-              <li><a href="/repairs">Repairs and misted units</a></li>
+              <li><a href="/services/windows">Replacement windows</a></li>
+              <li><a href="/services/doors">Front and back doors</a></li>
+              <li><a href="/services/bifold">Bi-folds and sliders</a></li>
+              <li><a href="/services/sash">Sliding sash</a></li>
+              <li><a href="/services/conservatories">Conservatories</a></li>
+              <li><a href="/services/repairs">Repairs and misted units</a></li>
             </ul>
           </div>
           <div>
@@ -465,14 +465,14 @@ export default function Home() {
             <p style={{ margin: 0 }}>
               &copy; {new Date().getFullYear()} {siteConfig.legalBusinessName} &middot; Company {siteConfig.companyRegistrationNumber} &middot; 
               FENSA {siteConfig.fensaNumber} &middot; VAT {siteConfig.vatNumber} &middot; 
-              <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
+              <a href="/privacy-policy">Privacy</a> &middot; <a href="/terms-and-conditions">Terms</a>
             </p>
           </div>
       </footer>
 
       <div className="sticky">
         <a className="call" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>Call {siteConfig.phone}</a>
-        <a className="quote" href="#quote">Get a fixed price</a>
+        <a className="quote" href="/request-a-quote">Get a fixed price</a>
       </div>
 
       <Script id="motion-script" strategy="afterInteractive">
@@ -590,3 +590,4 @@ export default function Home() {
     </>
   );
 }
+
