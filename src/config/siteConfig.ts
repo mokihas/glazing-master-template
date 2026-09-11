@@ -1,4 +1,4 @@
-﻿export const siteConfig = {
+export const siteConfig = {
   businessName: "[Business Name]",
   legalBusinessName: "[Company Ltd]",
   tagline: "Architectural Glazing",
@@ -48,8 +48,8 @@
   },
   trustBadges: [
     { name: "GGF Member", image: "/images/badges/ggf.png" },
-    { name: "FENSA Registered", image: "/images/badges/fensa.png" },
-    { name: "Checkatrade", image: "/images/badges/checkatrade.png" }
+    { name: "FENSA Registered", image: "/images/badges/fensa.jpg" },
+    { name: "InstallSure", image: "/images/badges/installsure.jpg" }
   ] as Array<{name: string, image: string}>,
   companyRegistrationNumber: "[No.]",
   yearEstablished: "[Year]",
