@@ -461,13 +461,13 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className="wrap legal">
-          <p style={{ margin: 0 }}>
-            &copy; {new Date().getFullYear()} {siteConfig.businessName} &middot; Company {siteConfig.companyRegistrationNumber} &middot; 
-            FENSA Registered &middot; VAT Registered &middot; 
-            <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
-          </p>
-        </div>
+          <div className="wrap legal">
+            <p style={{ margin: 0 }}>
+              &copy; {new Date().getFullYear()} {siteConfig.businessName} &middot; Company {siteConfig.companyRegistrationNumber} &middot; 
+              FENSA {siteConfig.fensaNumber} &middot; VAT {siteConfig.vatNumber} &middot; 
+              <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
+            </p>
+          </div>
       </footer>
 
       <div className="sticky">

@@ -52,6 +52,8 @@ export const siteConfig = {
     { name: "InstallSure", image: "/images/badges/installsure.jpg" }
   ] as Array<{name: string, image: string}>,
   companyRegistrationNumber: "[No.]",
+  vatNumber: "[No.]",
+  fensaNumber: "[No.]",
   yearEstablished: "[Year]",
   founder: "[Owner]",
   description: "[Town] window and door installers since [Year]. Fixed written prices, 10-year insurance-backed guarantee, FENSA registered.",
