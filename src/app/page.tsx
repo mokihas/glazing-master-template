@@ -1,272 +1,592 @@
-import Link from "next/link"
 import { siteConfig } from "@/config/siteConfig"
-import { Button } from "@/components/ui/Button"
-import { ServiceCard } from "@/components/ui/ServiceCard"
-import { ProjectCard } from "@/components/ui/ProjectCard"
-import TrustBadgesRow from "@/components/ui/TrustBadgesRow"
-import FaqSection from "@/components/ui/FaqSection"
-import { ArrowRight, Phone, Play } from "lucide-react"
-import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema"
+import Script from "next/script"
 
 export default function Home() {
   return (
     <>
-      <LocalBusinessSchema />
-      
-      {/* SECTION 1 - HERO (Architectural Elegance) */}
-      <section className="relative min-h-[90vh] flex items-center bg-background overflow-hidden border-b border-border">
-        
-        {/* Right Side GHL Embed or Fallback */}
-        <div className="absolute inset-0 w-full h-full lg:w-[45%] lg:left-auto lg:right-0 bg-muted z-0 flex items-center justify-center border-l border-border">
-          {siteConfig.ghl?.heroFormEmbedCode && siteConfig.ghl.heroFormEmbedCode.includes('<') && !siteConfig.ghl.heroFormEmbedCode.includes('Paste your GHL') ? (
-            <div 
-              className="w-full h-full bg-white flex items-center justify-center p-8 lg:p-12 overflow-y-auto"
-              dangerouslySetInnerHTML={{ __html: siteConfig.ghl.heroFormEmbedCode }}
-            />
-          ) : (
-            <div className="w-full h-full bg-white flex flex-col items-center justify-center p-8 lg:p-16">
-              <div className="w-full max-w-md space-y-6">
-                <div className="text-center space-y-2">
-                  <span className="text-secondary font-bold tracking-[0.2em] uppercase text-xs">GHL Lead Capture</span>
-                  <h3 className="text-2xl font-bold text-foreground">Request a Quote</h3>
-                  <p className="text-muted-foreground text-sm">Paste your GHL Form Embed Code into siteConfig.ts to replace this skeleton.</p>
-                </div>
-                <div className="space-y-4 pt-4 opacity-40">
-                  <div className="h-12 w-full bg-muted border border-border rounded-md" />
-                  <div className="h-12 w-full bg-muted border border-border rounded-md" />
-                  <div className="h-24 w-full bg-muted border border-border rounded-md" />
-                  <div className="h-12 w-full bg-foreground rounded-md" />
-                </div>
-              </div>
-            </div>
-          )}
-           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent lg:block hidden pointer-events-none" />
-           <div className="absolute inset-0 bg-background/90 lg:hidden block pointer-events-none" />
+      <div className="ec-hero">
+        <div className="hero-bg" aria-hidden="true">
+          <div className="hero-bg-slide is-active"><span>Hero photo 1 &middot; windows</span></div>
+          <div className="hero-bg-slide"><span>Hero photo 2 &middot; doors</span></div>
+          <div className="hero-bg-slide"><span>Hero photo 3 &middot; conservatories</span></div>
+          <div className="hero-bg-slide"><span>Hero photo 4 &middot; porches</span></div>
         </div>
-        
-        <div className="container relative z-10 animate-fade-up">
-          <div className="max-w-2xl">
-            <div className="mb-8 inline-flex items-center gap-3">
-               <span className="w-12 h-[1px] bg-secondary" />
-               <span className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">
-                 Bespoke Glazing in {siteConfig.city}
-               </span>
+        <div className="hero-bg-overlay"></div>
+
+        <div className="ec-announce">The only {siteConfig.city} installer offering a 15-year guarantee</div>
+
+        <div className="ec-navrow">
+          <div className="wrap">
+            <a className="ec-brand" href="/">
+              <span className="ec-brand-mark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" aria-hidden="true">
+                  <rect x="4" y="3" width="16" height="18" rx="2" />
+                  <path d="M12 3v18M4 12h16" />
+                </svg>
+              </span>
+              {siteConfig.businessName}
+            </a>
+            <ul className="ec-nav-links">
+              <li><a href="/windows">Windows</a></li>
+              <li><a href="/doors">Doors</a></li>
+              <li><a href="/areas">Areas</a></li>
+              <li><a href="/prices">Prices</a></li>
+              <li><a href="/reviews">Reviews</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+            <div className="ec-navright">
+              <a className="ec-navphone" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>{siteConfig.phone}</a>
+              <a className="ec-btn-solid-ec" href="#quote">Book a survey</a>
             </div>
-            
-            <h1 className="text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.05] tracking-[-0.02em] text-foreground mb-8">
-              Clarity in <br/>
-              <span className="text-muted-foreground">Every Detail.</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed max-w-lg mb-12">
-              Elevating modern architecture through precision glass installation, bespoke residential mirrors, and imposing commercial facades.
+          </div>
+        </div>
+
+        <div className="ec-body">
+          <h1 className="ec-h1" aria-label="New windows, doors, conservatories and porches">
+            New
+            <span className="rot" aria-hidden="true">
+              <span className="rot-track">
+                <span className="rot-w is-on">windows</span>
+                <span className="rot-w">doors</span>
+                <span className="rot-w">conservatories</span>
+                <span className="rot-w">porches</span>
+              </span>
+            </span>
+          </h1>
+          <p className="ec-h2">for {siteConfig.city} homeowners who want a warmer, quieter house without the hard sell</p>
+          <a className="btn ec-cta" href="#quote">Book a free survey</a>
+          <p className="ec-cta-note">
+            Fixed price, valid 90 days. No salesman, no pressure, gone in 20 minutes.<br />
+            or call <a href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>{siteConfig.phone}</a> &mdash; we answer 8am&ndash;6pm
+          </p>
+          <div className="hero-dots" role="group" aria-label="Hero photos"></div>
+        </div>
+
+        <div className="stats stats--boxed">
+          <ul>
+            <li><b>2,800</b><span>windows fitted</span></li>
+            <li><b>17 yrs</b><span>fitting in {siteConfig.city} and {siteConfig.state}</span></li>
+            <li><b>4.6 wks</b><span>average survey to fit day</span></li>
+            <li><b>10 yrs</b><span>insurance-backed guarantee</span></li>
+          </ul>
+        </div>
+
+        <div className="ec-trustcard">
+          <h3>Trusted by</h3>
+          <div className="ec-press">
+            {siteConfig.trustBadges.map((badge, i) => (
+              <img key={i} src={badge.image} alt={badge.name} style={{ height: '34px', width: 'auto' }} />
+            ))}
+          </div>
+          <div className="ec-divider"></div>
+          <div className="ec-review">
+            <svg className="w-5 h-5" viewBox="0 0 24 24" style={{ height: '24px', width: '24px' }}>
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            <span style={{ marginLeft: '10px' }}><b>{siteConfig.reviews.aggregateRating}</b> out of 5 &middot; {siteConfig.reviews.totalReviews} Google reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <section className="trust">
+        <div className="wrap">
+          <div className="google-reviews-head">
+            <svg className="w-5 h-5" viewBox="0 0 24 24" style={{ height: '28px', width: '28px' }}>
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            <span style={{ marginLeft: '10px' }}><b>{siteConfig.reviews.aggregateRating}</b> out of 5 &middot; {siteConfig.reviews.totalReviews} Google reviews</span>
+          </div>
+          <div className="google-reviews-grid">
+            {siteConfig.testimonials.slice(0,3).map((test, i) => (
+              <div key={i} className="google-review-card">
+                <p className="stars" aria-label="Rated 5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                <blockquote>{test.text}</blockquote>
+                <cite>{test.name}, posted on Google</cite>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pad alt">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2 className="dsp">Tell us what the job is and we&apos;ll price that job.</h2>
+            <p className="lede">Four routes, four different quotes. Pick the one that matches what you&apos;re actually replacing.</p>
+          </div>
+          <div className="panes">
+            <a className="pane" href="/windows">
+              <div className="pane-kicker">Warmer rooms, quieter street</div>
+              <h3>Replacing windows</h3>
+              <p>Two windows or the whole front elevation. Priced per opening, scaffold included where it&apos;s needed.</p>
+              <span className="pane-go">Price my windows</span>
+            </a>
+            <a className="pane" href="/doors">
+              <div className="pane-kicker">In and out in one day</div>
+              <h3>One front or back door</h3>
+              <p>Composite, uPVC or aluminium. Old door out, new one in and locking properly before we leave.</p>
+              <span className="pane-go">Price a door</span>
+            </a>
+            <a className="pane" href="/whole-house">
+              <div className="pane-kicker">Staged over two or three days</div>
+              <h3>Whole house</h3>
+              <p>Every window and both doors. One survey, one price, one team, and you keep the house watertight throughout.</p>
+              <span className="pane-go">Book a whole-house survey</span>
+            </a>
+            <a className="pane" href="/conservatories">
+              <div className="pane-kicker">Drawing before you commit a penny</div>
+              <h3>Conservatory or extension</h3>
+              <p>Glazed roofs, bi-folds and sliders. Building control and structural sign-off handled by us.</p>
+              <span className="pane-go">Talk it through</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="proof pad">
+        <div className="wrap">
+          <div>
+            <div className="bigstat">91%</div>
+            <h2 className="dsp" style={{ fontSize: 'clamp(21px,2.2vw,26px)', marginTop: '14px' }}>
+              of our jobs were fitted within six weeks of the survey.
+            </h2>
+            <p className="src">Source: every domestic install we completed between 1 January and 31 December 2025 &mdash; 214 jobs. Figures updated each January.</p>
+          </div>
+          <div className="chart">
+            <div className="bar-row"><span>2&ndash;3 weeks</span><div className="bar" style={{ width: '39%' }}></div><span>18%</span></div>
+            <div className="bar-row"><span>4 weeks</span><div className="bar" style={{ width: '67%' }}></div><span>31%</span></div>
+            <div className="bar-row"><span>5 weeks</span><div className="bar" style={{ width: '56%' }}></div><span>26%</span></div>
+            <div className="bar-row"><span>6 weeks</span><div className="bar" style={{ width: '35%' }}></div><span>16%</span></div>
+            <div className="bar-row"><span>7 weeks +</span><div className="bar late" style={{ width: '20%' }}></div><span>9%</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="alt">
+        <div className="wrap" style={{ paddingTop: 'var(--section)' }}>
+          <div className="sec-head">
+            <h2 className="dsp">The five things that happen, in order.</h2>
+            <p className="lede">Nobody phones you afterwards to renegotiate. The number on the quote is the number on the invoice.</p>
+          </div>
+        </div>
+        <div className="steps">
+          <div className="step"><div className="step-n">1</div><h3>Survey</h3><p>45 minutes. Every opening measured to the millimetre, plus a look at lintels, sills and anything the last fitter got wrong.</p></div>
+          <div className="step"><div className="step-n">2</div><h3>Fixed price</h3><p>Emailed within 24 hours, itemised per opening. Valid 90 days. No pressure discount attached to it.</p></div>
+          <div className="step"><div className="step-n">3</div><h3>Manufacture</h3><p>Made to your measurements by our local fabricator. Frame colour and glass spec confirmed in writing before it&apos;s cut.</p></div>
+          <div className="step"><div className="step-n">4</div><h3>Fit day</h3><p>Dust sheets down, old units out, new ones in, everything sealed and the skip loaded. House is watertight every night.</p></div>
+          <div className="step"><div className="step-n">5</div><h3>Sign-off</h3><p>We walk the job with you, adjust anything stiff, then register it with FENSA. Certificate lands inside 20 days.</p></div>
+        </div>
+      </section>
+
+      <section className="pad">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2 className="dsp">Our seven-point guarantee</h2>
+            <p className="lede">The same promises on every job, from a single sash to a full house.</p>
+          </div>
+          <div className="guarantee-grid">
+            <article className="guarantee-card">
+              <div className="guarantee-head">
+                <svg className="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" /></svg>
+                <h3 className="guarantee-title">Reliable</h3>
+              </div>
+              <p>You&apos;re busy and we&apos;ll work around that. You get a confirmed fitting date the week before, a call the morning we set off, and a realistic finish time.</p>
+              <p>No open-ended &quot;sometime that week&quot;.</p>
+            </article>
+            <article className="guarantee-card">
+              <div className="guarantee-head">
+                <svg className="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 20h16" /><path d="M7 20v-5h10v5" /><path d="M9 15V4h6v11" /></svg>
+                <h3 className="guarantee-title">Clean</h3>
+              </div>
+              <p>Dust sheets down before the first frame comes out. Old units, offcuts, silicone waste and packaging leave with us the same day.</p>
+              <p>We hoover through, wipe the glass down, and wear shoe covers indoors.</p>
+            </article>
+            <article className="guarantee-card">
+              <div className="guarantee-head">
+                <svg className="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 13h4l3 3h4" /><path d="M20 11V6a2 2 0 0 0-4 0" /><path d="M16 10V4a2 2 0 0 0-4 0v6" /><path d="M12 10V5a2 2 0 0 0-4 0v8" /></svg>
+                <h3 className="guarantee-title">Courteous</h3>
+              </div>
+              <p>Friendly and respectful to you, your property, your family and your neighbours.</p>
+              <p>We work around pets and children, keep every opening secured while we&apos;re on site, and never leave a property unsealed overnight.</p>
+            </article>
+            <article className="guarantee-card">
+              <div className="guarantee-head">
+                <svg className="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /><path d="M9 12l2 2 4-4" /></svg>
+                <h3 className="guarantee-title">Trustworthy</h3>
+              </div>
+              <p>Every fitter is DBS-checked, fully insured and directly employed by us.</p>
+              <p>No unvetted subcontractors turning up at your door in an unmarked van.</p>
+            </article>
+            <article className="guarantee-card">
+              <div className="guarantee-head">
+                <svg className="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" /><path d="M8 9h8" /><path d="M8 12h5" /></svg>
+                <h3 className="guarantee-title">Honest</h3>
+              </div>
+              <p>Sometimes we find rotten timber, a failed lintel or damaged reveals once the old frame is out.</p>
+              <p>We stop, show you, explain the options and the cost, and only carry on once you&apos;ve agreed. Otherwise the quoted price is the price you pay.</p>
+            </article>
+            <article className="guarantee-card">
+              <div className="guarantee-head">
+                <svg className="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 20l7-7" /><path d="M14 4l6 6-3 3-6-6z" /><path d="M11 7L8 4H4v4l3 3" /></svg>
+                <h3 className="guarantee-title">Professional</h3>
+              </div>
+              <p>FENSA-registered and manufacturer-trained on every system we install.</p>
+              <p>We keep our accreditations current and register your installation with building control.</p>
+            </article>
+            <article className="guarantee-card guarantee-card--wide">
+              <div className="guarantee-head">
+                <svg className="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5" /><path d="M9 13l-2 8 5-3 5 3-2-8" /></svg>
+                <h3 className="guarantee-title">Covered</h3>
+              </div>
+              <p>Your frames and sealed units come with a 10-year manufacturer guarantee.</p>
+              <p>We add 5 years of our own on top, covering the installation itself &mdash; seals, fixings, finish and weathertightness. Backed by an insurance-backed guarantee, so the cover stands even if we don&apos;t.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="pad alt">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2 className="dsp">Recent jobs, and what the customer said afterwards.</h2>
+          </div>
+          <div className="jobs">
+            {siteConfig.projects.slice(0,3).map((job, i) => (
+              <article key={i} className="job">
+                <div className="job-img">Project photo &middot; 4:3<br />{job.title}</div>
+                <div className="job-body">
+                  <div className="job-meta">{job.location} &middot; {job.title}</div>
+                  <p className="stars" aria-label="Rated 5 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                  <blockquote>{job.description}</blockquote>
+                  <cite>Verified Review</cite>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pad">
+        <div className="wrap">
+          <div className="sec-head">
+            <h2 className="dsp">Why local homeowners choose us over the rest</h2>
+          </div>
+          <div className="compare-wrap">
+            <table className="compare">
+              <thead>
+                <tr>
+                  <th>What matters to you</th>
+                  <th className="compare-us">{siteConfig.businessName}</th>
+                  <th>National chains</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Deal directly with the owner</td><td className="compare-us">&#10003; Yes</td><td>Call centre</td></tr>
+                <tr><td>No high-pressure sales reps</td><td className="compare-us">&#10003; Yes</td><td className="compare-no">&#10007; No</td></tr>
+                <tr><td>Traditional putty-work specialists</td><td className="compare-us">&#10003; Yes</td><td className="compare-no">&#10007; Rare</td></tr>
+                <tr><td>Transparent fixed pricing</td><td className="compare-us">&#10003; Yes</td><td>Hidden extras</td></tr>
+                <tr><td>Own team &mdash; never subcontracted</td><td className="compare-us">&#10003; Yes</td><td>Often subbed</td></tr>
+                <tr><td>17+ years serving your area</td><td className="compare-us">&#10003; Yes</td><td>Out-of-town</td></tr>
+                <tr><td>5 years&apos; extra warranty this month</td><td className="compare-us">&#10003; Free</td><td className="compare-no">&#10007; No</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="owner pad">
+        <div className="wrap">
+          <div className="portrait">Owner photo &middot; 4:5<br />On site, no studio backdrop</div>
+          <div>
+            <h2 className="dsp">You'll meet {siteConfig.founder} at the survey, and again on fit day.</h2>
+            <p className="lede" style={{ marginTop: '16px' }}>{siteConfig.founder} fitted windows for other firms for eleven years before starting this business in {siteConfig.yearEstablished}, tired of installing units measured wrong by a salesman who was never coming back.</p>
+            <p className="lede">So here the person who measures your house is the person who fits it. There is no commission, no evening appointment, and no price that drops by a third if you sign tonight. Four fitters, all employed, all local.</p>
+            <p className="sig">{siteConfig.founder}, owner</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="cover pad alt">
+        <div className="wrap">
+          <div className="cover-top">
+            <div>
+              <h2 className="dsp">Where we work.</h2>
+              <p className="lede" style={{ marginTop: '18px' }}>We stay within 40 minutes of the workshop so a callback in year seven is a phone call, not a claim form.</p>
+              <p style={{ fontSize: '16px', color: 'var(--mute)' }}>Outside these districts? Ring anyway &mdash; if we can&apos;t do it, we&apos;ll tell you who can.</p>
+            </div>
+            <div className="cover-map">
+              <div className="cover-map-embed">Google Map embed &middot; placeholder<br />{siteConfig.streetAddress}</div>
+              <a className="cover-map-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">View on Google Maps &rarr;</a>
+            </div>
+          </div>
+          <div className="cover-areas">
+            <div>
+              <h3>{siteConfig.city}</h3>
+              <ul className="districts">
+                <li><a href="#">{siteConfig.city} Central</a></li>
+                <li><a href="#">{siteConfig.city} North</a></li>
+                <li><a href="#">{siteConfig.city} South</a></li>
+                <li><a href="#">{siteConfig.city} East</a></li>
+                <li><a href="#">{siteConfig.city} West</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3>{siteConfig.state}</h3>
+              <ul className="districts">
+                <li><a href="#">Surrounding Area 1</a></li>
+                <li><a href="#">Surrounding Area 2</a></li>
+                <li><a href="#">Surrounding Area 3</a></li>
+                <li><a href="#">Surrounding Area 4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="finance">
+        <div className="wrap">
+          <div className="finance-panel">
+            <div>
+              <h2 className="dsp">Spread it over two years at 0%.</h2>
+              <p>A &pound;6,400 whole-house job is &pound;266 a month for 24 months with nothing to pay for the first three. Subject to status. Credit provided by a third-party lender; we&apos;re a credit broker, not a lender.</p>
+            </div>
+            <a className="btn btn-light" href="/finance">See the finance options</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="pad">
+        <div className="wrap">
+          <div className="sec-head"><h2 className="dsp">The questions we get asked every week.</h2></div>
+          <div className="faq">
+            {siteConfig.faqs.map((faq, i) => (
+              <details key={i} open={i === 0}>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="final pad alt" id="quote">
+        <div className="wrap">
+          <div>
+            <h2 className="dsp">Start with the job you&apos;ve got.</h2>
+            <p className="lede" style={{ marginTop: '12px' }}>Same four routes. Or fill the form and we&apos;ll ring you back within one working hour.</p>
+            <div className="panes" style={{ marginTop: '24px' }}>
+              <a className="pane" href="/windows">
+                <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>Replacing windows</h3>
+                <span className="pane-go">Price my windows</span>
+              </a>
+              <a className="pane" href="/doors">
+                <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>One front or back door</h3>
+                <span className="pane-go">Price a door</span>
+              </a>
+              <a className="pane" href="/whole-house">
+                <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>Whole house</h3>
+                <span className="pane-go">Book a survey</span>
+              </a>
+              <a className="pane" href="/conservatories">
+                <h3 style={{ fontSize: '16.5px', marginBottom: '10px' }}>Conservatory or extension</h3>
+                <span className="pane-go">Talk it through</span>
+              </a>
+            </div>
+          </div>
+
+          <form name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="quote" />
+            <p className="hp"><label>Leave blank <input name="bot-field" /></label></p>
+            <h3 style={{ fontSize: '20px', marginBottom: '16px' }}>Get a fixed price</h3>
+            <label htmlFor="job">What&apos;s the job?</label>
+            <select id="job" name="job" required>
+              <option value="">Choose one&hellip;</option>
+              <option>Replacing windows</option>
+              <option>One front or back door</option>
+              <option>Whole house</option>
+              <option>Conservatory or extension</option>
+              <option>Something else</option>
+            </select>
+            <label htmlFor="name">Your name</label>
+            <input id="name" name="name" autoComplete="name" required />
+            <label htmlFor="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autoComplete="tel" required />
+            <label htmlFor="postcode">Postcode</label>
+            <input id="postcode" name="postcode" autoComplete="postal-code" required />
+            <label htmlFor="detail">Anything we should know (optional)</label>
+            <textarea id="detail" name="detail" rows={3} placeholder="e.g. six windows front and back, 1930s semi"></textarea>
+            <button className="btn" type="submit">Request my fixed price</button>
+            <p className="formnote">We ring back within one working hour, 8am&ndash;6pm Mon&ndash;Sat. We don&apos;t pass your details to anyone and we don&apos;t book evening appointments.</p>
+          </form>
+        </div>
+      </section>
+
+      <footer>
+        <div className="wrap">
+          <div>
+            <a className="logo" href="/">{siteConfig.businessName}<span>WINDOWS &amp; DOORS &middot; {siteConfig.city.toUpperCase()}</span></a>
+            <p style={{ marginTop: '18px', maxWidth: '38ch' }}>
+              {siteConfig.streetAddress}<br />
+              <a className="foot-phone" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>{siteConfig.phone}</a><br />
+              {siteConfig.email}
             </p>
-            
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-              <Button size="lg" asChild className="w-full sm:w-auto">
-                <Link href="/request-a-quote">Start a Project</Link>
-              </Button>
-              <Link href="/projects" className="group flex items-center gap-3 text-sm font-bold tracking-[0.1em] uppercase text-foreground hover:text-secondary transition-colors">
-                <span className="flex items-center justify-center w-12 h-12 rounded-full border border-border group-hover:border-secondary transition-colors">
-                  <Play className="w-4 h-4 ml-1" />
-                </span>
-                View Showreel
-              </Link>
-            </div>
-            </div>
+            <p style={{ fontSize: '14px' }}>Mon&ndash;Fri 8am&ndash;6pm &middot; Sat 9am&ndash;1pm</p>
           </div>
-        </section>
-
-      <TrustBadgesRow />
-
-      {/* SECTION 2 - STATS / TRUST */}
-      <section className="py-20 bg-background border-b border-border">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 md:divide-x md:divide-border">
-            {[
-              { value: "20+", label: "Years Experience" },
-              { value: "500+", label: "Projects Completed" },
-              { value: "100%", label: "Safety Record" },
-              { value: "24/7", label: "Emergency Response" }
-            ].map((stat, i) => (
-              <div key={i} className={`flex flex-col ${i !== 0 ? 'md:pl-12' : ''}`}>
-                <span className="text-4xl md:text-5xl font-bold text-foreground mb-2">{stat.value}</span>
-                <span className="text-xs font-bold tracking-[0.1em] uppercase text-muted-foreground">{stat.label}</span>
-              </div>
-            ))}
+          <div>
+            <h4>What we fit</h4>
+            <ul>
+              <li><a href="/windows">Replacement windows</a></li>
+              <li><a href="/doors">Front and back doors</a></li>
+              <li><a href="/doors/bifold">Bi-folds and sliders</a></li>
+              <li><a href="/windows/sash">Sliding sash</a></li>
+              <li><a href="/conservatories">Conservatories</a></li>
+              <li><a href="/repairs">Repairs and misted units</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Useful</h4>
+            <ul>
+              <li><a href="/prices">Price guide</a></li>
+              <li><a href="/finance">Finance</a></li>
+              <li><a href="/guarantee">Our guarantee</a></li>
+              <li><a href="/reviews">Reviews</a></li>
+              <li><a href="/areas">Areas we cover</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
           </div>
         </div>
-      </section>
-
-      {/* SECTION 3 - SERVICES */}
-      <section className="py-32 bg-background">
-        <div className="container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
-            <div className="max-w-2xl">
-              <div className="mb-6 inline-flex items-center gap-3">
-                 <span className="w-8 h-[1px] bg-secondary" />
-                 <span className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">Expertise</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                Architectural Glazing Services.
-              </h2>
-            </div>
-            <p className="text-muted-foreground max-w-sm leading-relaxed">
-              From structural commercial glass to bespoke residential installations, we engineer transparency.
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-            {siteConfig.services.map((service) => (
-              <ServiceCard 
-                key={service.id}
-                title={service.name}
-                description={service.shortDescription}
-                href={`/services/${service.slug}`}
-              />
-            ))}
-          </div>
+        <div className="wrap legal">
+          <p style={{ margin: 0 }}>
+            &copy; {new Date().getFullYear()} {siteConfig.businessName} &middot; Company {siteConfig.companyRegistrationNumber} &middot; 
+            FENSA Registered &middot; VAT Registered &middot; 
+            <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
+          </p>
         </div>
-      </section>
+      </footer>
 
-      {/* SECTION 4 - THE APPROACH (Visual break) */}
-      <section className="relative py-40 bg-foreground text-background overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-40">
-           <img src={siteConfig.heroImage} alt="Architectural glass" className="w-full h-full object-cover object-center mix-blend-overlay opacity-30" />
-        </div>
-        <div className="container relative z-10 text-center max-w-4xl mx-auto">
-           <h2 className="text-[2.5rem] md:text-[4rem] font-bold leading-[1.1] tracking-tight mb-8">
-             "Glass is not merely a material; it is the medium through which architecture breathes."
-           </h2>
-           <p className="text-muted-foreground uppercase tracking-[0.2em] text-xs font-bold">
-             The {siteConfig.businessName !== "[BUSINESS NAME]" ? siteConfig.businessName : "GlazeCorp"} Philosophy
-           </p>
-        </div>
-      </section>
+      <div className="sticky">
+        <a className="call" href={`tel:` + siteConfig.phone.replace(/\s+/g, '')}>Call {siteConfig.phone}</a>
+        <a className="quote" href="#quote">Get a fixed price</a>
+      </div>
 
-      {/* SECTION 5 - PROJECTS */}
-      <section className="py-32 bg-muted">
-        <div className="container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
-             <div className="max-w-2xl">
-              <div className="mb-6 inline-flex items-center gap-3">
-                 <span className="w-8 h-[1px] bg-secondary" />
-                 <span className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">Selected Works</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-                Featured Projects.
-              </h2>
-            </div>
-            <Link href="/projects" className="group flex items-center text-xs font-bold tracking-[0.15em] uppercase text-foreground transition-colors hover:text-secondary">
-              View All Projects <ArrowRight className="ml-3 h-4 w-4 transform transition-transform duration-500 group-hover:translate-x-2" />
-            </Link>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            {siteConfig.projects.map((project) => (
-              <ProjectCard key={project.id} {...project} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <Script id="motion-script" strategy="afterInteractive">
+        {`
+        (function () {
+          'use strict';
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          var EASE = 'cubic-bezier(.16,1,.3,1)';
 
-      {/* SECTION 6 - GBP TESTIMONIALS (Conditional) */}
-      {siteConfig.reviews?.googleBusinessProfileUrl && siteConfig.reviews.googleBusinessProfileUrl !== "" && (
-        <section className="py-32 bg-background border-t border-border overflow-hidden">
-          <div className="container">
-            <div className="flex flex-col items-center text-center mb-16">
-              <div className="mb-6 inline-flex items-center gap-3">
-                 <span className="text-xs font-bold tracking-[0.2em] uppercase text-secondary">Client Endorsements</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
-                Trusted by the Community.
-              </h2>
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-xl font-bold">{siteConfig.reviews.aggregateRating}</span>
-                <div className="flex text-[#FBBC04]">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-sm font-medium text-muted-foreground">
-                Based on {siteConfig.reviews.totalReviews} Google Reviews
-              </p>
-            </div>
+          var slides = Array.prototype.slice.call(document.querySelectorAll('.hero-bg-slide'));
+          var track = document.querySelector('.rot-track');
+          var words = track ? Array.prototype.slice.call(track.querySelectorAll('.rot-w')) : [];
+          var dotsWrap = document.querySelector('.hero-dots');
+          var count = Math.max(slides.length, words.length);
+          var cur = 0, timer = null, dots = [];
 
-            <div className="max-w-5xl mx-auto">
-              {siteConfig.reviews.reviewWidgetEmbedCode && siteConfig.reviews.reviewWidgetEmbedCode.includes('<') && !siteConfig.reviews.reviewWidgetEmbedCode.includes('Paste your Google') ? (
-                <div dangerouslySetInnerHTML={{ __html: siteConfig.reviews.reviewWidgetEmbedCode }} />
-              ) : (
-                <div className="grid md:grid-cols-2 gap-8">
-                  {siteConfig.testimonials.map((testimonial) => (
-                    <div key={testimonial.id} className="p-8 bg-muted rounded-xl border border-border flex flex-col justify-between">
-                      <div>
-                        <div className="flex text-[#FBBC04] mb-4">
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <svg key={star} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                            </svg>
-                          ))}
-                        </div>
-                        <p className="text-lg text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
-                      </div>
-                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
-                        <div>
-                          <p className="font-bold text-sm text-foreground">{testimonial.name}</p>
-                          <p className="text-xs text-muted-foreground">{testimonial.service}</p>
-                        </div>
-                        <svg className="w-6 h-6" viewBox="0 0 24 24">
-                          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                        </svg>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-              
-              <div className="mt-12 text-center">
-                <Button variant="outline" asChild>
-                  <a href={siteConfig.reviews.googleBusinessProfileUrl} target="_blank" rel="noopener noreferrer">
-                    Read all reviews on Google
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+          function fit() {
+            if (!track || !words[cur]) return;
+            track.style.width = words[cur].offsetWidth + 'px';
+          }
+          if (track && words.length > 1) {
+            track.classList.add('is-js');
+            fit();
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+            window.addEventListener('resize', fit);
+          }
 
-      {/* SECTION 7 - FAQS */}
-      <FaqSection />
+          function go(n) {
+            if (n === cur) return;
+            if (slides[cur]) slides[cur].classList.remove('is-active');
+            if (slides[n]) slides[n].classList.add('is-active');
+            if (words[cur] && words[n]) {
+              var out = words[cur], inn = words[n];
+              out.classList.remove('is-on');
+              out.classList.add('is-out');
+              inn.style.transition = 'none';
+              inn.classList.remove('is-out');
+              void inn.offsetWidth;
+              inn.style.transition = '';
+              inn.classList.add('is-on');
+            }
+            dots.forEach(function (d, i) { d.setAttribute('aria-current', i === n ? 'true' : 'false'); });
+            cur = n;
+            fit();
+          }
+          function start() {
+            clearInterval(timer);
+            if (!reduce) timer = setInterval(function () { go((cur + 1) % count); }, 4500);
+          }
+          if (dotsWrap && count > 1) {
+            for (var d = 0; d < count; d++) {
+              var b = document.createElement('button');
+              b.type = 'button';
+              b.setAttribute('aria-label', 'Show photo ' + (d + 1));
+              b.setAttribute('aria-current', d === 0 ? 'true' : 'false');
+              (function (i) { b.addEventListener('click', function () { go(i); start(); }); })(d);
+              dotsWrap.appendChild(b);
+              dots.push(b);
+            }
+          }
+          if (count > 1) start();
 
-      {/* SECTION 8 - FINAL CTA */}
-      <section className="py-32 bg-background border-t border-border">
-        <div className="container flex flex-col items-center text-center">
-          <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-10">
-             <span className="w-8 h-[1px] bg-foreground"></span>
-          </div>
-          <h2 className="text-[3rem] md:text-[5rem] font-bold tracking-tight text-foreground leading-none mb-10">
-            Let's build <br/>
-            <span className="text-muted-foreground">something brilliant.</span>
-          </h2>
-          <div className="flex flex-col sm:flex-row gap-6">
-            <Button size="lg" asChild>
-              <Link href="/request-a-quote">Start Your Project</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/contact">Contact Our Office</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+          if (reduce || !('IntersectionObserver' in window)) return;
+
+          var heroBits = document.querySelectorAll('.ec-h1, .ec-h2, .ec-cta, .ec-cta-note, .hero-dots, .stats--boxed, .ec-trustcard');
+          heroBits.forEach(function (el, i) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(24px)';
+            el.style.transition = 'opacity .9s ' + EASE + ' ' + (150 + i * 90) + 'ms, transform .9s ' + EASE + ' ' + (150 + i * 90) + 'ms';
+          });
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              heroBits.forEach(function (el) {
+                el.style.opacity = '1'; el.style.transform = 'none';
+                setTimeout(function () { el.style.opacity = ''; el.style.transform = ''; el.style.transition = ''; }, 2000);
+              });
+            });
+          });
+
+          function hide(el, delay) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(36px)';
+            el.style.transition = 'opacity .9s ' + EASE + ' ' + delay + 'ms, transform .9s ' + EASE + ' ' + delay + 'ms';
+          }
+          function show(el) {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            setTimeout(function () { el.style.opacity = ''; el.style.transform = ''; el.style.transition = ''; }, 1600);
+          }
+          var singles = Array.prototype.slice.call(document.querySelectorAll(
+            '.sec-head, .owner .wrap > div:last-child, .cover-top > div, .finance-panel, ' +
+            '.compare-wrap, .faq details, form, .portrait, .bigstat, .chart'
+          ));
+          singles.forEach(function (el) { hide(el, 0); });
+
+          var groups = Array.prototype.slice.call(document.querySelectorAll(
+            '.panes, .jobs, .steps, .guarantee-grid, .google-reviews-grid, .districts'
+          ));
+          groups.forEach(function (g) {
+            Array.prototype.forEach.call(g.children, function (c, i) { hide(c, i * 80); });
+          });
+
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              if (groups.indexOf(e.target) !== -1) Array.prototype.forEach.call(e.target.children, show);
+              else show(e.target);
+              io.unobserve(e.target);
+            });
+          }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+          singles.concat(groups).forEach(function (el) { io.observe(el); });
+        })();
+        `}
+      </Script>
     </>
-  )
+  );
 }
-
-

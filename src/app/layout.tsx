@@ -1,11 +1,6 @@
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import { siteConfig } from "@/config/siteConfig"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const viewport: Viewport = {
   themeColor: "#0284c7",
@@ -67,10 +62,13 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} min-h-screen flex flex-col font-sans antialiased`}>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      </head>
+      <body>
+        <main>{children}</main>
         
         {/* GoHighLevel Chat Widget Injection */}
         {siteConfig.ghl?.enableChatWidget && siteConfig.ghl.chatWidgetEmbedCode.includes('<') && !siteConfig.ghl.chatWidgetEmbedCode.includes('Paste your GHL') && (
