@@ -58,7 +58,44 @@
   emergencyService: true,
   certifications: ["FENSA"],
   brands: [],
-  services: [],
+  services: [
+    {
+      id: "service-1",
+      name: "[Service Name 1]",
+      slug: "service-1",
+      shortDescription: "[Short Description]",
+      longDescription: "[Long Description]",
+      image: "/images/service-placeholder.svg",
+      applications: ["[Application 1]", "[Application 2]"],
+    },
+    {
+      id: "service-2",
+      name: "[Service Name 2]",
+      slug: "service-2",
+      shortDescription: "[Short Description]",
+      longDescription: "[Long Description]",
+      image: "/images/service-placeholder.svg",
+      applications: ["[Application 1]", "[Application 2]"],
+    },
+    {
+      id: "service-3",
+      name: "[Service Name 3]",
+      slug: "service-3",
+      shortDescription: "[Short Description]",
+      longDescription: "[Long Description]",
+      image: "/images/service-placeholder.svg",
+      applications: ["[Application 1]", "[Application 2]"],
+    },
+    {
+      id: "service-4",
+      name: "[Service Name 4]",
+      slug: "service-4",
+      shortDescription: "[Short Description]",
+      longDescription: "[Long Description]",
+      image: "/images/service-placeholder.svg",
+      applications: ["[Application 1]", "[Application 2]"],
+    }
+  ],
   testimonials: [
     {
       id: 1,
